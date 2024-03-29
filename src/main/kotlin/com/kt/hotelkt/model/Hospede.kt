@@ -4,11 +4,12 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import org.intellij.lang.annotations.Identifier
 
 @Entity
-public class Quarto {
+public class Hospede {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null;
-        val numero: Int? = null;
+        val nome: String = "";
 }

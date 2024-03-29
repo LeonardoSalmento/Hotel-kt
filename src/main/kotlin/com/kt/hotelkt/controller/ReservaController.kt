@@ -12,9 +12,7 @@ class ReservaController {
 
     @GetMapping
     fun listarQuartos(): List<Quarto>{
-        val quarto = Quarto(
-                Numero = 1
-        )
+        val quarto = Quarto()
 
         val quartos = Arrays.asList(quarto, quarto)
         return quartos
