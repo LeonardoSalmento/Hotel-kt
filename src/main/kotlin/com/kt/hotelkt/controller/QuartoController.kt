@@ -1,5 +1,6 @@
 package com.kt.hotelkt.controller
 
+import com.kt.hotelkt.model.PesquisarDataDto
 import com.kt.hotelkt.model.Quarto
 import com.kt.hotelkt.service.QuartoService
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,6 +19,12 @@ class QuartoController (private val quartoService: QuartoService){
         val quartos = quartoService.buscarTodos()
         return quartos
     }
+
+    @PostMapping("/buscarQuartosDisponiveis")
+    fun BuscarQuartosDisponiveis(@RequestBody quarto: PesquisarDataDto): List<Quarto>{
+        val quartos = quartoService.quartosDisponiveisPorData(quarto)
+        return quartos
+    }
     @GetMapping("/{id}")
     fun BuscarQuartoPorId(@PathVariable id: Long): Quarto{
         val quarto = quartoService.buscarPorId(id)
@@ -25,7 +32,7 @@ class QuartoController (private val quartoService: QuartoService){
     }
     @PostMapping
     fun CadastrarQuarto(@RequestBody quarto: Quarto): Quarto{
-        val newQuarto = quartoService.Cadastrar(quarto)
+        val newQuarto = quartoService.cadastrar(quarto)
         return newQuarto
     }
 }
