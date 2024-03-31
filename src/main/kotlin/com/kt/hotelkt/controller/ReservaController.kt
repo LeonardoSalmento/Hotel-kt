@@ -1,20 +1,26 @@
 package com.kt.hotelkt.controller
 
 import com.kt.hotelkt.model.Quarto
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.kt.hotelkt.model.Reserva
+import com.kt.hotelkt.model.ReservaDto
+import com.kt.hotelkt.service.ReservaService
+import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
 @RequestMapping("/Reserva")
-class ReservaController {
+class ReservaController (private val reservaService: ReservaService) {
 
     @GetMapping
-    fun listarQuartos(): List<Quarto>{
-        val quarto = Quarto()
+    fun listarQuartos(): List<Reserva>{
+        val reservas = reservaService.buscarTodos()
+        return reservas
+    }
 
-        val quartos = Arrays.asList(quarto, quarto)
-        return quartos
+    @PostMapping
+    fun CadastrarReserva(@RequestBody reserva: ReservaDto): Reserva{
+        print("Controller")
+        val newReserva = reservaService.cadastrar(reserva)
+        return newReserva
     }
 }
