@@ -10,13 +10,13 @@ import java.util.Date
 @Entity
 public class Reserva {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long = 0;
+    val id: Long = 0;
     @ManyToOne
-    val quarto: Quarto? = null;
+    var quarto: Quarto? = null;
     @ManyToOne
-    val hospede: Hospede? = null;
-    val dataInicio: Date? = null;
-    val dataFim: Date? = null;
-    val quantidadeDias: Int = 0;
-    val cancelada: Boolean? = null;
+    var hospede: Hospede? = null;
+    var dataInicio: Date? = null;
+    var dataFim: Date? = null;
+    var quantidadeDias: Int = 0;
+    var cancelada: Boolean? = null;
 }
